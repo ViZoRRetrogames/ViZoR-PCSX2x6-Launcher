@@ -1,0 +1,3 @@
+GameID: NM00048
+Title: Fate - Unlimited Codes
+BootProg: FTELOAD

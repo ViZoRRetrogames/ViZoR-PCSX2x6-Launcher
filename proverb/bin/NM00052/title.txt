@@ -1,0 +1,3 @@
+GameID: NM00052
+Title: Mobile Suit Gundam - Gundam vs. Gundam NEXT
+BootProg: GNXLOAD

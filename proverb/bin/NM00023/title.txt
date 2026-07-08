@@ -1,0 +1,3 @@
+GameID: NM00023
+Title: Taiko Drum Master 7
+BootProg: TA7LOAD

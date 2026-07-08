@@ -1,0 +1,3 @@
+GameID: NM00026
+Title: Tekken 5 - Dark Resurrection
+BootProg: T55LOAD

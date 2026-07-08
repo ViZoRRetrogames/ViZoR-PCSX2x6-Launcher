@@ -1,0 +1,3 @@
+GameID: NM00056
+Title: Taiko Drum Master 13
+BootProg: T13LOAD

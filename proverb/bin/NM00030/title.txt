@@ -1,0 +1,3 @@
+GameID: NM00030
+Title: Mobile Suit Gundam Quiz Warrior
+BootProg: GQZLOAD

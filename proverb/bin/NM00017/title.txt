@@ -1,0 +1,3 @@
+GameID: NM00017
+Title: Mobile Suit Gundam Zeta - A.E.U.G. vs. Titans DX
+BootProg: GDXLOAD

@@ -1,0 +1,3 @@
+GameID: NM00047
+Title: Ace Driver 3 - Final Turn
+BootProg: NRALOAD

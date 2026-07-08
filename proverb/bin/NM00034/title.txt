@@ -1,0 +1,3 @@
+GameID: NM00034
+Title: Mobile Suit Gundam SEED Destiny - Federation vs. Z.A.F.T. II
+BootProg: SE2LOAD

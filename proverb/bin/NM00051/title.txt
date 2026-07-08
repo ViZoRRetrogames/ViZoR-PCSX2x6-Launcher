@@ -1,0 +1,3 @@
+GameID: NM00051
+Title: Taiko Drum Master 12
+BootProg: T12LOAD

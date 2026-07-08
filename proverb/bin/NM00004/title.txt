@@ -1,0 +1,3 @@
+GameID: NM00004
+Title: Tekken 4
+BootProg: TK4LOAD

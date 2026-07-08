@@ -1,0 +1,3 @@
+GameID: NM00027
+Title: Super Dragon Ball Z
+BootProg: DBALOAD

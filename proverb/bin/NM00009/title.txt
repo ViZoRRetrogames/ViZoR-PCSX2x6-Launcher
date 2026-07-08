@@ -1,0 +1,3 @@
+GameID: NM00009
+Title: Netchuu! Pro Baseball 2002
+BootProg: NPBLOAD

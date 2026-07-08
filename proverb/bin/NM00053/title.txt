@@ -1,0 +1,3 @@
+GameID: NM00053
+Title: Taiko Drum Master 12 - Asian Edition Taiwan
+BootProg: TECLOAD

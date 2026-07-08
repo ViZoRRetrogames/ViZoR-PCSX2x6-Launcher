@@ -1,0 +1,3 @@
+GameID: NM00046
+Title: Taiko Drum Master 11 - Asian Edition
+BootProg: TEBLOAD

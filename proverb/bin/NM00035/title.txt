@@ -1,0 +1,3 @@
+GameID: NM00035
+Title: The Battle of YuYu Hakusho - Deathmatch! Dark Martial Arts Association
+BootProg: YUULOAD

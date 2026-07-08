@@ -1,0 +1,3 @@
+GameID: NM00033
+Title: Taiko Drum Master 8
+BootProg: TA8LOAD

@@ -1,0 +1,3 @@
+GameID: NM00028
+Title: Druaga Online - The Story of Aon
+BootProg: DRULOAD

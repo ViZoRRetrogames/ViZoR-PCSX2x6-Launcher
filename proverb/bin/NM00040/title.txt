@@ -1,0 +1,3 @@
+GameID: NM00040
+Title: Kinnikuman Muscle Grand Prix 2
+BootProg: KI2LOAD

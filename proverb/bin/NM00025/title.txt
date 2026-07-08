@@ -1,0 +1,3 @@
+GameID: NM00025
+Title: Zoids Infinity - EX
+BootProg: ZOILOAD

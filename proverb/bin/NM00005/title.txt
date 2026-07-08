@@ -1,0 +1,3 @@
+GameID: NM00005
+Title: Wangan Midnight R
+BootProg: AL3LOAD

@@ -1,0 +1,3 @@
+GameID: NM00020
+Title: Dragon Chronicle Online - Great Sky Battle
+BootProg: DCOLOAD

@@ -1,0 +1,3 @@
+GameID: NM00037
+Title: Quiz & Variety Suku Suku Inufuku 2 - More Suku Suku
+BootProg: DR2LOAD

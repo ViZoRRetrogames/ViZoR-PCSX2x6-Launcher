@@ -1,0 +1,3 @@
+GameID: NM00041
+Title: Taiko Drum Master 10
+BootProg: T10LOAD

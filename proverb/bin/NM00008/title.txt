@@ -1,0 +1,3 @@
+GameID: NM00008
+Title: Wangan Midnight
+BootProg: WGNLOAD
