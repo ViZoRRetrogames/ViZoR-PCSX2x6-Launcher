@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Logo.png" alt="ViZoRRetrogames Logo" width="550">
+  <img src="logo.png" alt="ViZoRRetrogames Logo" width="550">
 </p>
 
 <h1 align="center">ViZoRRetrogames - PCSX2x6 Ultimate Launcher</h1>
