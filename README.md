@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="cabecera.png" alt="ViZoRRetrogames Logo" width="550">
+  <img src="Logo.png" alt="ViZoRRetrogames Logo" width="550">
 </p>
 
 <h1 align="center">ViZoRRetrogames - PCSX2x6 Ultimate Launcher</h1>
@@ -23,8 +23,3 @@ Para ejecutar el código fuente o el compilado necesitas:
 * **PCSX2** (Versión Qt compatible con argumentos `.acgame`).
 * La estructura de carpetas `proverb/bin/` en el mismo directorio.
 
-## 📦 Instalación y Uso (Código Fuente)
-
-1. Clona este repositorio:
-   ```bash
-   git clone [https://github.com/TU_USUARIO/TU_REPOSITORIO.git](https://github.com/TU_USUARIO/TU_REPOSITORIO.git)
