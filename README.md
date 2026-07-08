@@ -9,6 +9,10 @@
 </p>
 
 ---
+## 👾 Referencias
+
+* Programa creado para ayudar al proyecto principal https://ps2homebrew-arcade.github.io/pcsx2x6/ de https://github.com/PS2Homebrew-arcade y facilitar la instalación de los juegos con solo indicar el propio juego y la memory card.
+* El lanzador incluye la carpeta proverb Game library Template.
 
 ## 🚀 Características
 
