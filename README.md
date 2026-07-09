@@ -5,11 +5,11 @@
 <h1 align="center">ViZoRRetrogames - PCSX2x6 Ultimate Launcher</h1>
 
 <p align="center">
-  <strong>Un lanzador arcade estilizado e industrial optimizado para sistemas SYSTEM246 y SYSTEM256 usando PCSX2x6.</strong>
+  <strong>Un lanzador arcade optimizado para sistemas SYSTEM246 y SYSTEM256 usando PCSX2x6.</strong>
 </p>
 
 ---
-## 👾 Referencias
+## Referencias
 
 * Programa creado para ayudar al proyecto principal https://ps2homebrew-arcade.github.io/pcsx2x6/ de https://github.com/PS2Homebrew-arcade y facilitar la instalación de los juegos con solo indicar el propio juego y la memory card.
 * El lanzador incluye la carpeta proverb Game library Template.
@@ -21,9 +21,15 @@
 * 🖥️ **Diseño Industrial**: Interfaz oscura personalizada con estética arcade basada en `CustomTkinter`.
 * 💾 **Persistencia**: Recuerda tus últimas rutas configuradas para abrir y jugar en segundos.
 
+## 📺 Videotutorial y Guía de Instalación
+
+Canal de YouTube --> https://www.youtube.com/@ViZoRRetrogames
+Tutorial de PSCSX2x6 y del lanzador --> https://www.youtube.com/watch?v=wJoqVk5AGCI
+
 ## 🛠️ Requisitos previos
 
 Para ejecutar el código fuente o el compilado necesitas:
 * **PCSX2** (Versión Qt compatible con argumentos `.acgame`).
 * La estructura de carpetas `proverb/bin/` en el mismo directorio.
+
 
