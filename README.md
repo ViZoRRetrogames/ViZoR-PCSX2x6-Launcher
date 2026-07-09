@@ -21,10 +21,15 @@
 * 🖥️ **Diseño Industrial**: Interfaz oscura personalizada con estética arcade basada en `CustomTkinter`.
 * 💾 **Persistencia**: Recuerda tus últimas rutas configuradas para abrir y jugar en segundos.
 
-## 📺 Videotutorial y Guía de Instalación
+## 📺 Mi Canal de Youtube
 
 Canal de YouTube --> https://www.youtube.com/@ViZoRRetrogames
-Tutorial de PSCSX2x6 y del lanzador --> https://www.youtube.com/watch?v=wJoqVk5AGCI
+
+## 📺 Videotutorial y Guía de Instalación
+
+💾 **Haz clic en la imagen de abajo para reproducir el tutorial en YouTube:**
+
+[![Ver tutorial en YouTube](https://img.youtube.com/vi/wJoqVk5AGCI/maxresdefault.jpg)](https://www.youtube.com/watch?v=wJoqVk5AGCI)
 
 ## 🛠️ Requisitos previos
 
