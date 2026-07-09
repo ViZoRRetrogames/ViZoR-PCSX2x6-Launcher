@@ -23,7 +23,8 @@ def obtener_ruta_recurso(ruta_relativa):
 class ViZoRLauncherFinal(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("ViZoRRetrogames - PCSX2x6 Ultimate Launcher")
+        # TÍTULO ACTUALIZADO A LA VERSIÓN v1.0.1
+        self.title("ViZoRRetrogames - PCSX2x6 Ultimate Launcher v1.0.1")
         self.geometry("850x760")
         self.resizable(False, False)
         
@@ -44,23 +45,18 @@ class ViZoRLauncherFinal(ctk.CTk):
         }
         self.cargar_config_global()
         
+        # Variable de estado para el modo de ejecución directo
+        self.modo_directo = False
+        
         # =====================================================================
-        # CABECERA CON AMBOS LOGOS LADO A LADO (CENTRADOS)
+        # CABECERA CON LOGO RECTANGULAR UNIFICADO (CENTRADO)
         # =====================================================================
         self.header_frame = ctk.CTkFrame(self, fg_color="transparent")
         self.header_frame.pack(pady=(15, 5), fill="x")
         
-        # Contenedor centralizado para empaquetar de forma limpia horizontalmente
-        self.logos_wrapper = ctk.CTkFrame(self.header_frame, fg_color="transparent")
-        self.logos_wrapper.pack(anchor="center")
-        
-        # Logo del Canal (Izquierda)
-        self.logo_label = ctk.CTkLabel(self.logos_wrapper, text="")
-        self.logo_label.pack(side="left", padx=15)
-        
-        # Logo del Emulador [LogoEmu.png] (Derecha)
-        self.logo_emu_label = ctk.CTkLabel(self.logos_wrapper, text="")
-        self.logo_emu_label.pack(side="left", padx=15)
+        # Logo del Canal / Emulador unificado en una sola imagen
+        self.logo_label = ctk.CTkLabel(self.header_frame, text="")
+        self.logo_label.pack(anchor="center", pady=(5, 5))
         
         self.cargar_logos_cabecera()
 
@@ -199,25 +195,61 @@ class ViZoRLauncherFinal(ctk.CTk):
             json.dump(self.config, f, indent=4)
 
     def cargar_logos_cabecera(self):
-        # Carga del Logo 1 (logo.png)
         path_logo = obtener_ruta_recurso("logo.png")
         if os.path.exists(path_logo):
-            img = Image.open(path_logo).convert("RGBA")
-            self.logo_image = ctk.CTkImage(light_image=img, dark_image=img, size=(125, 125))
-            self.logo_label.configure(image=self.logo_image, text="")
-
-        # Carga del Logo 2 (LogoEmu.png) en la misma raíz
-        path_emu = obtener_ruta_recurso("LogoEmu.png")
-        if os.path.exists(path_emu):
-            img_emu = Image.open(path_emu).convert("RGBA")
-            self.logo_emu_image = ctk.CTkImage(light_image=img_emu, dark_image=img_emu, size=(125, 125))
-            self.logo_emu_label.configure(image=self.logo_emu_image, text="")
+            try:
+                img = Image.open(path_logo).convert("RGBA")
+                
+                # CÁLCULO DINÁMICO DE PROPORCIÓN (EVITA DEFORMACIÓN)
+                alto_deseado = 110  
+                ancho_original, alto_original = img.size
+                proporcion = ancho_original / alto_original
+                ancho_calculado = int(alto_deseado * proporcion)
+                
+                self.logo_image = ctk.CTkImage(light_image=img, dark_image=img, size=(ancho_calculado, alto_deseado))
+                self.logo_label.configure(image=self.logo_image, text="")
+            except Exception as e:
+                self.logo_label.configure(text="ViZoRRetrogames Ultimate Launcher", font=("Impact", 24), text_color=self.ACCENT_YELLOW)
+        else:
+            self.logo_label.configure(text="ViZoRRetrogames Ultimate Launcher", font=("Impact", 24), text_color=self.ACCENT_YELLOW)
 
     def listar_juegos_proverb(self):
         base = os.path.join(".", "proverb", "bin")
         if os.path.exists(base):
             return [d for d in os.listdir(base) if os.path.isdir(os.path.join(base, d))]
         return []
+
+    def verificar_estado_instalacion(self):
+        """ Escanea dinámicamente si el juego ya tiene su .acgame creado para cambiar el botón """
+        target_games_base = self.entry_games_dir.get() if hasattr(self, 'entry_games_dir') else self.config["games_dir"]
+        game_id = self.combo_game_id.get()
+        
+        if not target_games_base or not game_id or game_id == "Seleccionar ID...":
+            return
+
+        # LOGIC FIX: El archivo .acgame mantiene los espacios del nombre real (Ej: "Super Dragon Ball Z.acgame")
+        folder_name = "".join(c for c in self.game_real_title if c.isalnum() or c in (" ", "_", "-")).strip()
+        if not folder_name:
+            folder_name = game_id
+
+        acgame_path = os.path.join(target_games_base, f"{folder_name}.acgame")
+
+        if os.path.exists(acgame_path):
+            self.btn_launch.configure(
+                text="🚀 LAUNCH GAME (DIRECT MODE)",
+                fg_color="#2ecc71",
+                text_color="#FFFFFF",
+                hover_color="#27ae60"
+            )
+            self.modo_directo = True
+        else:
+            self.btn_launch.configure(
+                text="⚡ INITIALIZE CABINET & LAUNCH ARCADE SYSTEM ⚡",
+                fg_color=self.ACCENT_YELLOW,
+                text_color="#10141D",
+                hover_color="#FFFFFF"
+            )
+            self.modo_directo = False
 
     def actualizar_info_juego(self, *args):
         game_id = self.combo_game_id.get()
@@ -250,13 +282,19 @@ class ViZoRLauncherFinal(ctk.CTk):
         else:
             self.lbl_miniature.configure(image="", text="Imagen no\ndisponible")
 
+        self.verificar_estado_instalacion()
+
     def buscar_emulador(self):
         p = filedialog.askopenfilename(filetypes=[("Emu", "pcsx2-qt.exe")])
-        if p: self.actualizar_campo("pcsx2_path", p)
+        if p: 
+            self.actualizar_campo("pcsx2_path", p)
+            self.verificar_estado_instalacion()
 
     def buscar_dir_juegos(self):
         p = filedialog.askdirectory()
-        if p: self.actualizar_campo("games_dir", p)
+        if p: 
+            self.actualizar_campo("games_dir", p)
+            self.verificar_estado_instalacion()
 
     def buscar_dir_mcards(self):
         p = filedialog.askdirectory()
@@ -295,18 +333,32 @@ class ViZoRLauncherFinal(ctk.CTk):
         source_rom = self.entry_rom.get()
         source_mcard = self.entry_mcard.get()
 
-        if not all([emu, target_games_base, target_mcard_dir, game_id, source_rom, source_mcard]) or game_id == "Seleccionar ID...":
-            messagebox.showerror("Error", "Por favor rellena todos los campos del lanzador.")
+        if not all([emu, target_games_base, target_mcard_dir, game_id]) or game_id == "Seleccionar ID...":
+            messagebox.showerror("Error", "Por favor rellena la configuración global y el ID de juego.")
+            return
+
+        folder_name = "".join(c for c in self.game_real_title if c.isalnum() or c in (" ", "_", "-")).strip()
+        if not folder_name:
+            folder_name = game_id
+
+        acgame_path = os.path.join(target_games_base, f"{folder_name}.acgame")
+
+        if self.modo_directo and os.path.exists(acgame_path):
+            try:
+                subprocess.Popen([emu, acgame_path], cwd=os.path.dirname(emu))
+                return
+            except Exception as e:
+                messagebox.showerror("Error", f"No se pudo arrancar el juego en modo directo:\n{e}")
+                return
+
+        if not source_rom or not source_mcard:
+            messagebox.showerror("Error", "El juego no está instalado. Debe seleccionar una ROM y un Dongle para configurarlo por primera vez.")
             return
 
         source_proverb_elf = os.path.abspath(os.path.join(".", "proverb", "bin", game_id, "proverb.elf"))
         if not os.path.exists(source_proverb_elf):
             messagebox.showerror("Error", f"Falta el dongle de origen en:\n{source_proverb_elf}")
             return
-
-        folder_name = "".join(c for c in self.game_real_title if c.isalnum() or c in (" ", "_", "-")).strip()
-        if not folder_name:
-            folder_name = game_id
 
         try:
             rom_filename = os.path.basename(source_rom)
@@ -325,8 +377,6 @@ class ViZoRLauncherFinal(ctk.CTk):
                 
             final_proverb_path = os.path.join(game_folder_path, "proverb.elf")
             shutil.copy2(source_proverb_elf, final_proverb_path)
-
-            acgame_path = os.path.join(target_games_base, f"{folder_name}.acgame")
             
             acgame_content = (
                 "[game]\n"
@@ -344,6 +394,7 @@ class ViZoRLauncherFinal(ctk.CTk):
             with open(acgame_path, "w", encoding="utf-8", newline="\n") as f:
                 f.write(acgame_content)
 
+            self.verificar_estado_instalacion()
             subprocess.Popen([emu, acgame_path], cwd=os.path.dirname(emu))
 
         except Exception as e:
